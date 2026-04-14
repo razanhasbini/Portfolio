@@ -1,4 +1,7 @@
 @import './styles/global.css';
+
+html { scroll-behavior: smooth; }
+
 :root {
   --text: #6b6375;
   --text-h: #08060d;
