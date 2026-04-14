@@ -1,0 +1,17 @@
+@import './variables.css';
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; scrollbar-width: thin; scrollbar-color: var(--green-500) var(--bg-deep); }
+body { font-family: var(--font-body); background: var(--bg-deep); color: var(--text-primary); overflow-x: hidden; cursor: none; }
+a { text-decoration: none; color: inherit; cursor: none; }
+button { border: none; background: none; cursor: none; font-family: inherit; color: inherit; }
+::selection { background: var(--green-200); color: var(--green-900); }
+img { max-width: 100%; display: block; }
+
+/* Accent gradient text */
+.accent {
+  background: linear-gradient(135deg, var(--green-700), var(--green-500));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}

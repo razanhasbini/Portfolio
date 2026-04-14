@@ -1,0 +1,32 @@
+:root {
+  /* White-based theme with rich dark green accents */
+  --bg-deep: #f3f8f5;
+  --bg-dark: #e6f0ea;
+  --bg-card: #ffffff;
+  --bg-card-hover: #eaf4ee;
+  --bg-green: #d4e8db;
+  --green-900: #03120a;
+  --green-800: #092418;
+  --green-700: #0f4028;
+  --green-600: #165c38;
+  --green-500: #1e7a4b;
+  --green-400: #2d9961;
+  --green-300: #4db87a;
+  --green-200: #82cfa0;
+  --green-100: #b8e3c9;
+  --text-primary: #081a10;
+  --text-secondary: #1e3a2a;
+  --text-muted: #47705a;
+  --border: rgba(15, 64, 40, 0.16);
+  --border-light: rgba(15, 64, 40, 0.08);
+  --glow: rgba(15, 64, 40, 0.22);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.07);
+  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.09);
+  --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.12);
+  --font-display: 'Plus Jakarta Sans', sans-serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+  --font-accent: 'Plus Jakarta Sans', sans-serif;
+  --font-hero: 'Cormorant Garamond', serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}

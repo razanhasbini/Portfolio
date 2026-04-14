@@ -1,0 +1,27 @@
+/* Glow orb cursor */
+.cursor-orb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(30, 122, 75, 0.7) 0%, rgba(30, 122, 75, 0.15) 60%, transparent 80%);
+  box-shadow: 0 0 12px rgba(30, 122, 75, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 10000;
+  will-change: transform;
+  transition: width 0.3s, height 0.3s, box-shadow 0.3s, margin 0.3s;
+  margin: -11px 0 0 -11px;
+}
+
+.cursor-orb--hover {
+  width: 44px;
+  height: 44px;
+  margin: -22px 0 0 -22px;
+  box-shadow: 0 0 20px rgba(30, 122, 75, 0.6);
+}
+
+@media (max-width: 768px), (pointer: coarse) {
+  .cursor-orb { display: none; }
+}

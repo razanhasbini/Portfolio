@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Photo Effect Picker</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700&family=Space+Grotesk:wght@400;500&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #f3f8f5;
+    font-family: 'Space Grotesk', sans-serif;
+    color: #081a10;
+    min-height: 100vh;
+    padding: 2rem;
+  }
+
+  h1 {
+    font-family: 'Syne', sans-serif;
+    text-align: center;
+    font-size: 2rem;
+    color: #0f4028;
+    margin-bottom: 0.5rem;
+  }
+
+  .subtitle {
+    text-align: center;
+    color: #47705a;
+    margin-bottom: 3rem;
+    font-size: 0.95rem;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .card {
+    background: #fff;
+    border-radius: 1.2rem;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+    box-shadow: 0 4px 24px rgba(15,64,40,0.08);
+    border: 1.5px solid #e0ede4;
+    transition: border-color 0.3s;
+  }
+
+  .card:hover { border-color: #1e7a4b; }
+
+  .card h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.15rem;
+    color: #0f4028;
+  }
+
+  .card p {
+    font-size: 0.82rem;
+    color: #47705a;
+    text-align: center;
+    line-height: 1.5;
+  }
+
+  .demo-area {
+    width: 220px;
+    height: 280px;
+    position: relative;
+    border-radius: 1rem;
+    overflow: hidden;
+    cursor: none;
+  }
+
+  /* ===== 1. 3D MAGNETIC TILT ===== */
+  .tilt-wrap {
+    perspective: 800px;
+    width: 220px;
+    height: 280px;
+  }
+
+  .tilt-card {
+    width: 100%;
+    height: 100%;
+    border-radius: 1rem;
+    overflow: hidden;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.1s ease-out;
+    box-shadow: 0 12px 40px rgba(15,64,40,0.15);
+  }
+
+  .tilt-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+  }
+
+  .tilt-glare {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.35) 0%, transparent 60%);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+  }
+
+  .tilt-card:hover .tilt-glare { opacity: 1; }
+
+  .tilt-border {
+    position: absolute;
+    inset: 0;
+    border-radius: 1rem;
+    border: 2px solid rgba(30,122,75,0.2);
+    pointer-events: none;
+  }
+
+  /* ===== 2. SPOTLIGHT REVEAL ===== */
+  .spotlight-area {
+    background: #0a1f14;
+    position: relative;
+  }
+
+  .spotlight-area img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    filter: brightness(0.08);
+    transition: filter 0.7s;
+  }
+
+  .spotlight-mask {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    mix-blend-mode: normal;
+  }
+
+  .spotlight-area canvas {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  /* ===== 3. PIXEL SCATTER ===== */
+  .pixel-area {
+    position: relative;
+    overflow: visible !important;
+    width: 220px;
+    height: 280px;
+  }
+
+  .pixel-area canvas {
+    width: 220px;
+    height: 280px;
+    border-radius: 1rem;
+  }
+
+  /* ===== 4. LIQUID RIPPLE ===== */
+  .ripple-area {
+    position: relative;
+  }
+
+  .ripple-area canvas {
+    width: 100%;
+    height: 100%;
+    border-radius: 1rem;
+    display: block;
+  }
+
+  @media (max-width: 700px) {
+    .grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<h1>Pick Your Photo Effect</h1>
+<p class="subtitle">Hover over each photo to see the effect in action</p>
+
+<div class="grid">
+
+  <!-- 1. 3D MAGNETIC TILT -->
+  <div class="card">
+    <h2>1 &mdash; 3D Magnetic Tilt</h2>
+    <div class="tilt-wrap">
+      <div class="tilt-card" id="tiltCard">
+        <img src="/heropic.jpg" alt="photo" />
+        <div class="tilt-glare" id="tiltGlare"></div>
+        <div class="tilt-border"></div>
+      </div>
+    </div>
+    <p>Perspective tilt follows cursor with a light glare sliding across the surface</p>
+  </div>
+
+  <!-- 2. SPOTLIGHT REVEAL -->
+  <div class="card">
+    <h2>2 &mdash; Spotlight Reveal</h2>
+    <div class="demo-area spotlight-area" id="spotlightArea">
+      <img id="spotlightImg" src="/heropic.jpg" alt="photo" />
+      <canvas id="spotlightCanvas"></canvas>
+    </div>
+    <p>Dark silhouette &mdash; cursor reveals full color like a flashlight</p>
+  </div>
+
+  <!-- 3. PIXEL SCATTER -->
+  <div class="card">
+    <h2>3 &mdash; Pixel Scatter</h2>
+    <div class="pixel-area" id="pixelArea">
+      <canvas id="pixelCanvas"></canvas>
+    </div>
+    <p>Tiny tiles scatter away from cursor and magnetically snap back</p>
+  </div>
+
+  <!-- 4. LIQUID RIPPLE -->
+  <div class="card">
+    <h2>4 &mdash; Liquid Ripple</h2>
+    <div class="demo-area ripple-area" id="rippleArea">
+      <canvas id="rippleCanvas"></canvas>
+    </div>
+    <p>Water ripple distortion radiates from where you hover</p>
+  </div>
+
+</div>
+
+<script>
+/* ===== 1. 3D MAGNETIC TILT ===== */
+(() => {
+  const card = document.getElementById('tiltCard');
+  const glare = document.getElementById('tiltGlare');
+  const wrap = card.parentElement;
+
+  wrap.addEventListener('mousemove', (e) => {
+    const rect = wrap.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width;
+    const y = (e.clientY - rect.top) / rect.height;
+    const rotY = (x - 0.5) * 25;
+    const rotX = (0.5 - y) * 25;
+    card.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg) scale3d(1.04, 1.04, 1.04)`;
+    glare.style.background = `radial-gradient(circle at ${x * 100}% ${y * 100}%, rgba(255,255,255,0.4) 0%, transparent 55%)`;
+  });
+
+  wrap.addEventListener('mouseleave', () => {
+    card.style.transform = 'rotateX(0) rotateY(0) scale3d(1,1,1)';
+    card.style.transition = 'transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94)';
+    setTimeout(() => card.style.transition = 'transform 0.1s ease-out', 600);
+  });
+
+  wrap.addEventListener('mouseenter', () => {
+    card.style.transition = 'transform 0.1s ease-out';
+  });
+})();
+
+/* ===== 2. SPOTLIGHT REVEAL ===== */
+(() => {
+  const area = document.getElementById('spotlightArea');
+  const img = document.getElementById('spotlightImg');
+  const canvas = document.getElementById('spotlightCanvas');
+  const ctx = canvas.getContext('2d');
+  const W = 220, H = 280;
+  canvas.width = W; canvas.height = H;
+  canvas.style.width = W + 'px'; canvas.style.height = H + 'px';
+
+  let mx = -999, my = -999;
+
+  // Load image for the canvas spotlight
+  const photo = new Image();
+  photo.crossOrigin = 'anonymous';
+  photo.src = '/heropic.jpg';
+
+  photo.onload = () => {
+    draw();
+  };
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+
+    // Draw dark version
+    ctx.globalCompositeOperation = 'source-over';
+    ctx.drawImage(photo, 0, 0, W, H);
+    ctx.fillStyle = 'rgba(10, 31, 20, 0.88)';
+    ctx.fillRect(0, 0, W, H);
+
+    // Spotlight: draw bright photo clipped to circle
+    ctx.save();
+    ctx.globalCompositeOperation = 'destination-out';
+    const grad = ctx.createRadialGradient(mx, my, 10, mx, my, 80);
+    grad.addColorStop(0, 'rgba(0,0,0,1)');
+    grad.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, W, H);
+    ctx.restore();
+
+    requestAnimationFrame(draw);
+  }
+
+  // Hide original img, show canvas version
+  img.style.display = 'none';
+
+  // Draw base
+  photo.onload = () => {
+    // We'll paint in the draw loop
+    draw();
+  };
+
+  // Actually let's do it differently: bright image underneath, dark overlay on canvas
+  img.style.display = 'block';
+  img.style.filter = 'none';
+  canvas.style.position = 'absolute';
+  canvas.style.inset = '0';
+
+  function draw2() {
+    ctx.clearRect(0, 0, W, H);
+    ctx.fillStyle = 'rgba(8, 26, 16, 0.92)';
+    ctx.fillRect(0, 0, W, H);
+
+    if (mx > -100) {
+      ctx.save();
+      ctx.globalCompositeOperation = 'destination-out';
+      const grad = ctx.createRadialGradient(mx, my, 5, mx, my, 75);
+      grad.addColorStop(0, 'rgba(0,0,0,1)');
+      grad.addColorStop(0.7, 'rgba(0,0,0,0.6)');
+      grad.addColorStop(1, 'rgba(0,0,0,0)');
+      ctx.fillStyle = grad;
+      ctx.beginPath();
+      ctx.arc(mx, my, 75, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+    }
+
+    requestAnimationFrame(draw2);
+  }
+  draw2();
+
+  area.addEventListener('mousemove', (e) => {
+    const rect = area.getBoundingClientRect();
+    mx = e.clientX - rect.left;
+    my = e.clientY - rect.top;
+  });
+
+  area.addEventListener('mouseleave', () => { mx = -999; my = -999; });
+})();
+
+/* ===== 3. PIXEL SCATTER ===== */
+(() => {
+  const canvas = document.getElementById('pixelCanvas');
+  const ctx = canvas.getContext('2d');
+  const W = 220, H = 280;
+  canvas.width = W; canvas.height = H;
+
+  const TILE = 10;
+  const cols = Math.ceil(W / TILE);
+  const rows = Math.ceil(H / TILE);
+  let tiles = [];
+  let mx = -999, my = -999;
+
+  const photo = new Image();
+  photo.crossOrigin = 'anonymous';
+  photo.src = '/heropic.jpg';
+
+  photo.onload = () => {
+    // Create off-screen canvas for image data
+    const off = document.createElement('canvas');
+    off.width = W; off.height = H;
+    const offCtx = off.getContext('2d');
+    // Cover-fit the image
+    const imgRatio = photo.width / photo.height;
+    const canvasRatio = W / H;
+    let sw, sh, sx, sy;
+    if (imgRatio > canvasRatio) {
+      sh = photo.height;
+      sw = sh * canvasRatio;
+      sx = (photo.width - sw) / 2;
+      sy = 0;
+    } else {
+      sw = photo.width;
+      sh = sw / canvasRatio;
+      sx = 0;
+      sy = 0;
+    }
+    offCtx.drawImage(photo, sx, sy, sw, sh, 0, 0, W, H);
+
+    for (let r = 0; r < rows; r++) {
+      for (let c = 0; c < cols; c++) {
+        const x = c * TILE;
+        const y = r * TILE;
+        const imgData = offCtx.getImageData(x, y, TILE, TILE);
+        tiles.push({ x, y, homeX: x, homeY: y, dx: 0, dy: 0, imgData });
+      }
+    }
+    animate();
+  };
+
+  function animate() {
+    ctx.clearRect(0, 0, W, H);
+
+    for (const t of tiles) {
+      const cx = t.homeX + TILE / 2;
+      const cy = t.homeY + TILE / 2;
+      const distX = mx - cx;
+      const distY = my - cy;
+      const dist = Math.sqrt(distX * distX + distY * distY);
+      const radius = 80;
+
+      if (dist < radius && mx > -100) {
+        const force = (1 - dist / radius) * 40;
+        const angle = Math.atan2(distY, distX);
+        t.dx += -Math.cos(angle) * force * 0.3;
+        t.dy += -Math.sin(angle) * force * 0.3;
+      }
+
+      // Spring back
+      t.dx += (0 - t.dx) * 0.12;
+      t.dy += (0 - t.dy) * 0.12;
+      t.dx *= 0.88;
+      t.dy *= 0.88;
+
+      const drawX = t.homeX + t.dx;
+      const drawY = t.homeY + t.dy;
+      ctx.putImageData(t.imgData, Math.round(drawX), Math.round(drawY));
+    }
+
+    requestAnimationFrame(animate);
+  }
+
+  const area = document.getElementById('pixelArea');
+  area.addEventListener('mousemove', (e) => {
+    const rect = canvas.getBoundingClientRect();
+    mx = (e.clientX - rect.left) * (W / rect.width);
+    my = (e.clientY - rect.top) * (H / rect.height);
+  });
+  area.addEventListener('mouseleave', () => { mx = -999; my = -999; });
+})();
+
+/* ===== 4. LIQUID RIPPLE ===== */
+(() => {
+  const canvas = document.getElementById('rippleCanvas');
+  const ctx = canvas.getContext('2d');
+  const W = 220, H = 280;
+  canvas.width = W; canvas.height = H;
+
+  let mx = -999, my = -999;
+  let ripples = [];
+
+  const photo = new Image();
+  photo.crossOrigin = 'anonymous';
+  photo.src = '/heropic.jpg';
+
+  // Off-screen image
+  const off = document.createElement('canvas');
+  off.width = W; off.height = H;
+  const offCtx = off.getContext('2d');
+
+  photo.onload = () => {
+    const imgRatio = photo.width / photo.height;
+    const canvasRatio = W / H;
+    let sw, sh, sx, sy;
+    if (imgRatio > canvasRatio) {
+      sh = photo.height; sw = sh * canvasRatio;
+      sx = (photo.width - sw) / 2; sy = 0;
+    } else {
+      sw = photo.width; sh = sw / canvasRatio;
+      sx = 0; sy = 0;
+    }
+    offCtx.drawImage(photo, sx, sy, sw, sh, 0, 0, W, H);
+    animate();
+  };
+
+  let imgData, origData;
+
+  function animate() {
+    offCtx.clearRect(0, 0, W, H);
+    const imgRatio = photo.width / photo.height;
+    const canvasRatio = W / H;
+    let sw, sh, sx, sy;
+    if (imgRatio > canvasRatio) {
+      sh = photo.height; sw = sh * canvasRatio;
+      sx = (photo.width - sw) / 2; sy = 0;
+    } else {
+      sw = photo.width; sh = sw / canvasRatio;
+      sx = 0; sy = 0;
+    }
+    offCtx.drawImage(photo, sx, sy, sw, sh, 0, 0, W, H);
+    origData = offCtx.getImageData(0, 0, W, H);
+    imgData = ctx.createImageData(W, H);
+
+    // Copy original
+    imgData.data.set(origData.data);
+
+    // Apply ripple displacement
+    for (let i = ripples.length - 1; i >= 0; i--) {
+      const r = ripples[i];
+      r.radius += 1.5;
+      r.strength *= 0.96;
+      if (r.strength < 0.3) { ripples.splice(i, 1); continue; }
+
+      for (let y = Math.max(0, Math.floor(r.y - r.radius - 10)); y < Math.min(H, Math.ceil(r.y + r.radius + 10)); y++) {
+        for (let x = Math.max(0, Math.floor(r.x - r.radius - 10)); x < Math.min(W, Math.ceil(r.x + r.radius + 10)); x++) {
+          const dx = x - r.x;
+          const dy = y - r.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          const diff = Math.abs(dist - r.radius);
+          if (diff < 8) {
+            const wave = Math.cos((diff / 8) * Math.PI) * r.strength;
+            const angle = Math.atan2(dy, dx);
+            let srcX = Math.round(x + Math.cos(angle) * wave);
+            let srcY = Math.round(y + Math.sin(angle) * wave);
+            srcX = Math.max(0, Math.min(W - 1, srcX));
+            srcY = Math.max(0, Math.min(H - 1, srcY));
+            const dstIdx = (y * W + x) * 4;
+            const srcIdx = (srcY * W + srcX) * 4;
+            imgData.data[dstIdx] = origData.data[srcIdx];
+            imgData.data[dstIdx + 1] = origData.data[srcIdx + 1];
+            imgData.data[dstIdx + 2] = origData.data[srcIdx + 2];
+          }
+        }
+      }
+    }
+
+    ctx.putImageData(imgData, 0, 0);
+    requestAnimationFrame(animate);
+  }
+
+  let lastRipple = 0;
+  const area = document.getElementById('rippleArea');
+  area.addEventListener('mousemove', (e) => {
+    const rect = canvas.getBoundingClientRect();
+    mx = (e.clientX - rect.left) * (W / rect.width);
+    my = (e.clientY - rect.top) * (H / rect.height);
+    const now = Date.now();
+    if (now - lastRipple > 80) {
+      ripples.push({ x: mx, y: my, radius: 0, strength: 6 });
+      lastRipple = now;
+    }
+  });
+  area.addEventListener('mouseleave', () => { mx = -999; my = -999; });
+})();
+</script>
+
+</body>
+</html>
