@@ -3,7 +3,7 @@ name: Deploy Portfolio to GitHub Pages
 on:
   push:
     branches:
-      - tayseer-iter2
+      - main
   workflow_dispatch:
 
 permissions:
