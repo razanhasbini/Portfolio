@@ -8,6 +8,14 @@ button { border: none; background: none; cursor: none; font-family: inherit; col
 ::selection { background: var(--green-200); color: var(--green-900); }
 img { max-width: 100%; display: block; }
 
+@media (hover: none), (pointer: coarse) {
+  body,
+  a,
+  button {
+    cursor: auto;
+  }
+}
+
 /* Accent gradient text */
 .accent {
   background: linear-gradient(135deg, var(--green-700), var(--green-500));
