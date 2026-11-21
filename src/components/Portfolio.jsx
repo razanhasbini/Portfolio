@@ -80,10 +80,10 @@ const NAV = [
 ];
 
 const SERVICES = [
-  { n: '01', title: 'Full Stack Development', body: 'Complete web products from interface to backend: responsive React frontends, APIs, databases, auth, dashboards, and deployment-ready architecture.', tags: ['React', 'APIs', 'Databases'] },
-  { n: '02', title: 'Mobile App Development', body: 'Cross-platform mobile apps with polished flows, real-time data, notifications, clean state management, and store-ready product details.', tags: ['Flutter', 'Kotlin', 'Firebase'] },
-  { n: '03', title: 'AI', body: 'AI-powered product features including LLM integrations, chat flows, prompt systems, embeddings, model-backed workflows, and intelligent user experiences.', tags: ['LLMs', 'OpenAI', 'Workflows'] },
-  { n: '04', title: 'Automation', body: 'Reliable automation for repetitive work: scraping, reporting, scheduled jobs, browser automation, integrations, and operational tools that save time.', tags: ['Python', 'Playwright', 'Reports'] },
+  { n: '01', title: 'Full Stack Development', body: 'Enterprise applications and ERP systems end to end: React and Next.js frontends, ASP.NET Core backends, REST APIs, SQL databases, authentication, and third-party integrations.', tags: ['ASP.NET Core', 'React / Next.js', 'SQL'] },
+  { n: '02', title: 'Mobile App Development', body: 'Cross-platform and native apps with Flutter, Kotlin, and React Native, from API integrations to interconnected app ecosystems that share one backend.', tags: ['Flutter', 'Kotlin', 'React Native'] },
+  { n: '03', title: 'AI Development', body: 'AI-powered applications: LLM integrations, computer vision, intelligent recommendations, and real-time AI features built into real products.', tags: ['LLMs', 'Computer Vision', 'Real-time AI'] },
+  { n: '04', title: 'Automation', body: 'Workflow automation, scheduled processes, automated reporting, monitoring and notifications, web scraping, and business processes that run themselves.', tags: ['Python', 'Playwright', 'Reporting'] },
 ];
 
 const PROCESS_STEPS = [
@@ -119,13 +119,67 @@ const PROCESS_STEPS = [
   },
 ];
 
+/*
+  Project fields used by the work list and the project modal:
+  status     short label shown on the row and in the modal (Production, Live, Team project, …)
+  category   one-line category shown in the modal overview
+  role       what I did on the project
+  overview   the main description in the modal's Overview tab
+  highlights bullet list in the Overview tab
+  note       small caveat under the highlights
+  photosNote / linkNote   text shown when a project has no public screenshots / link
+  previewNote             hover-preview caption for projects without an image
+  archived   true = kept out of the featured list, shown under "More projects"
+*/
 const WORK = [
   {
     n: '01',
+    title: 'ERP Systems — Alara Line & Laz Press',
+    sub: 'Two production ERP systems running real business operations',
+    year: '',
+    status: 'Production · actively used',
+    category: 'Enterprise Software / Full-Stack Development',
+    role: 'Freelance full-stack developer',
+    tags: ['ASP.NET Core', 'C#', 'React', 'SQL', 'REST APIs'],
+    overview: 'Developed and deployed two production ERP systems actively used in business operations, featuring inventory, sales, purchasing, invoicing, analytics dashboards, role-based access control, and automated email/WhatsApp notifications.',
+    highlights: [
+      'Product and category management',
+      'Inventory and multi-location stock tracking',
+      'Sales, orders, purchasing, suppliers, and customers',
+      'Invoicing, returns, and financial reporting',
+      'Analytics dashboards with KPIs and filtered reports',
+      'Authentication, authorization, and role-based access',
+      'Modular backend architecture and REST APIs',
+      'Automated alerts and third-party integrations',
+    ],
+    note: 'These capabilities are spread across the two systems; not every feature exists in both. React powers the frontend of one of them.',
+    img: '',
+    stackPhotos: [],
+    docs: [],
+    photos: [],
+    photosNote: 'Both systems hold live client business data, so screenshots are not shared publicly.',
+    previewNote: 'Private client systems · no public screenshots',
+    linkNote: 'These are private business systems, so there is no public link.',
+    projectUrl: '',
+  },
+  {
+    n: '02',
     title: 'Bsheel App',
-    sub: 'Sidequest competition application',
+    sub: 'Gamified social exploration platform with real-world quests',
     year: '2026',
-    tags: ['Flutter / Dart', 'Supabase', 'Riverpod', 'Firebase Cloud Messaging', 'Cloudflare R2 / Workers'],
+    status: 'Team project · live on the stores',
+    category: 'Mobile Application / Collaborative Development',
+    role: 'Project management, code review, and development',
+    tags: ['Flutter / Dart', 'Supabase', 'Firebase', 'PostgreSQL', 'Nokia NaC / CAMARA'],
+    overview: 'Collaborated on and helped manage a gamified social exploration platform featuring real-world quests, interactive maps, community engagement, achievements, notifications, and telecom API integrations.',
+    highlights: [
+      'Real-world quests with quest verification and gamification',
+      'Location verification and geofencing on interactive maps',
+      'Telecom integrations through Nokia Network as Code / CAMARA APIs',
+      'XP, badges, leaderboards, and social features',
+      'Supabase, Firebase, and PostgreSQL backend, Cloudflare R2 / Workers, Riverpod state management, and push notifications',
+      'My role: project management, task coordination, code review, and hands-on technical contributions',
+    ],
     previewMode: 'phone',
     img: '/bsheel1.jpg',
     stackPhotos: ['/bsheel1.jpg', '/bsheel2.jpg', '/bsheel4.jpg'],
@@ -160,11 +214,22 @@ const WORK = [
     projectUrl: '',
   },
   {
-    n: '02',
+    n: '03',
     title: 'WAZZAFAK AI',
-    sub: 'Real time interview training application',
+    sub: 'AI-powered interview preparation for Android',
     year: '2025',
-    tags: ['Kotlin', 'MVVM', 'Docker', 'LLM integration', 'WebSocket', 'Golang'],
+    status: 'Featured · full build',
+    category: 'AI / Mobile Application',
+    role: 'Developer: Android app, Go backend, and AI integration',
+    tags: ['Kotlin', 'Go', 'Retrofit', 'LLM Integration', 'pgvector', 'MediaPipe'],
+    overview: 'Developed an AI-powered Android interview preparation platform featuring CV analysis, real-time interview simulations, and performance evaluation using language analysis and computer vision.',
+    highlights: [
+      'CV analysis with tailored recommendations',
+      'Real-time interview simulation with an AI interviewer',
+      'Performance scoring from the language of each answer, plus MediaPipe computer vision for stress analysis',
+      'Go backend with LLM integration and pgvector for semantic search',
+      'Kotlin Android client talking to the backend through Retrofit',
+    ],
     previewMode: 'phone',
     img: '/Wazzafak%201.jpg',
     stackPhotos: ['/Wazzafak%201.jpg', '/Wazzafak%202.jpg', '/Wazzafak%203.jpg'],
@@ -191,11 +256,22 @@ const WORK = [
     projectUrl: '',
   },
   {
-    n: '03',
+    n: '04',
     title: 'Cybersecurity Automation Dashboard',
-    sub: 'Integrated Cybersecurity Intelligence & Automated Reporting Platform',
+    sub: 'Cybersecurity automation platform that cut manual operations by over 80%',
     year: '2026',
-    tags: ['Next.js', 'FastAPI', 'Playwright', 'SOCKS5 Proxy Integration', 'Tor Network', 'SQLite'],
+    status: 'Professional project · SHELT Global',
+    category: 'Full-Stack Development / Automation',
+    role: 'Full-stack development and automation',
+    tags: ['Python', 'FastAPI', 'Next.js', 'Playwright', 'SQLite', 'SOCKS5 / Tor'],
+    overview: 'Built a full-stack cybersecurity automation platform that reduced manual operations by over 80%, integrating threat monitoring, impersonation detection, data leak analysis, automated reporting, and operational dashboards.',
+    highlights: [
+      'Over 80% reduction in manual operational work',
+      'Threat monitoring and impersonation detection',
+      'Data leak analysis with automated collection through Playwright, SOCKS5 proxies, and the Tor network',
+      'Automated report generation',
+      'Operational dashboards in Next.js on a FastAPI backend',
+    ],
     img: '/cyber1.jpg',
     stackPhotos: ['/cyber28.jpg', '/cyber29.jpg', '/cyber31.jpg'],
     docs: [
@@ -239,10 +315,42 @@ const WORK = [
     projectUrl: 'https://github.com/razanhasbini/automation-dashbaord',
   },
   {
-    n: '04',
+    n: '05',
+    title: 'iEvents Ecosystem',
+    sub: 'Three connected apps: iEvents, iVendors & Drivers',
+    year: '',
+    status: 'Team project · live on the stores',
+    category: 'Mobile Applications / Collaborative Development',
+    role: 'Team member: backend APIs and integrations',
+    tags: ['Laravel', 'PHP', 'REST APIs', 'SQL'],
+    overview: 'Collaborated with a development team on three interconnected mobile applications for event management, vendor operations, and driver coordination, contributing to backend APIs, integrations, and cross-platform workflows.',
+    highlights: [
+      'Three apps sharing one backend: customers (iEvents), vendors (iVendors), and drivers',
+      'Backend REST APIs in Laravel / PHP with a SQL database',
+      'Integrations and workflows that connect the three apps',
+      'iEvents is live on the App Store and Google Play; iEvents Vendor is live on the App Store',
+    ],
+    note: 'Built as part of a development team. I was not the sole developer.',
+    img: '',
+    stackPhotos: [],
+    docs: [],
+    photos: [],
+    photosNote: 'Screenshots for this project have not been added yet.',
+    projectLinks: [
+      { label: 'iEvents · App Store', href: 'https://apps.apple.com/lb/app/ievents/id6751114719', icon: 'appstore' },
+      { label: 'iEvents Vendor · App Store', href: 'https://apps.apple.com/lb/app/ievents-vendor/id6751649812', icon: 'appstore' },
+      { label: 'iEvents · Google Play Store', href: 'https://play.google.com/store/apps/details?id=com.mydomain.IEvents', icon: 'playstore' },
+    ],
+    projectUrl: '',
+  },
+  {
+    n: 'A1',
+    archived: true,
     title: 'Telegram Bots',
     sub: 'Privacy focused driving safety telegram bot',
     year: '2026',
+    status: 'Smaller project',
+    overview: 'A privacy-focused Telegram bot for sharing your location securely while driving, with real-time trusted-contact verification and user consent.',
     tags: ['Golang', 'Docker', 'Redis'],
     previewMode: 'phone',
     img: '/safebot1.png',
@@ -252,11 +360,18 @@ const WORK = [
     projectUrl: '',
   },
   {
-    n: '05',
+    n: '06',
     title: 'LAETA',
-    sub: 'Food waste management and surprise boxes application',
+    sub: 'Food-waste marketplace for surprise boxes',
     year: '2024',
+    category: 'Mobile Application / Full-Stack Development',
     tags: ['Kotlin', 'Golang', 'Flutter', 'Firebase', 'Postgres'],
+    overview: 'A marketplace where restaurants sell their unsold food of the day in surprise boxes, with separate customer and restaurant accounts.',
+    highlights: [
+      'Separate customer and restaurant accounts',
+      'Mobile clients in Kotlin and Flutter',
+      'Go backend with Firebase and PostgreSQL',
+    ],
     previewMode: 'phone',
     img: '/laeta1.jpg',
     stackPhotos: ['/laeta1.jpg', '/laeta2.jpg', '/laeta3.jpg'],
@@ -265,11 +380,21 @@ const WORK = [
     projectUrl: '',
   },
   {
-    n: '06',
-    title: 'Website Selection',
-    sub: 'Selected website projects and interactive web experiences',
+    n: '07',
+    title: 'Freelance Websites & E‑Commerce',
+    sub: 'E-commerce platforms, business websites, and custom web apps for clients',
     year: '2023-2026',
+    status: 'Freelance · live sites',
+    category: 'Web Development / Freelance',
+    role: 'Freelance full-stack developer',
     tags: ['SMTP', 'React', 'Laravel', 'Tailwind CSS', 'Framer Motion'],
+    overview: 'Designed and developed multiple e-commerce platforms, business websites, and custom web applications for clients, covering frontend development, backend integrations, and deployment.',
+    highlights: [
+      'E-commerce, including the Alara Line online store',
+      'Business and brand websites',
+      'Frontend development, backend integrations, and deployment',
+      'Live links for each site are in the Project Link tab',
+    ],
     img: '/alara1.jpeg',
     stackPhotos: ['/evoid1.png', '/apex1.png', '/apex2.png'],
     docs: [],
@@ -303,28 +428,54 @@ const WORK = [
   },
 ];
 
+// Work in progress: shown in a compact list under Selected Work, never as finished products.
+const ONGOING_WORK = [
+  {
+    title: 'AI Hair & Scalp Analysis',
+    body: 'Computer vision-based hair and scalp analysis for personalized product recommendations.',
+    tags: ['Computer Vision', 'Recommendations'],
+  },
+  {
+    title: 'Fit It',
+    body: 'AI-powered virtual try-on: paste a link to a piece of clothing from any online store and see the outfit on you in real time, following your movement on camera.',
+    tags: ['Virtual Try-On', 'Computer Vision', 'Real-time'],
+  },
+  {
+    title: 'Unspoken',
+    body: 'Social platform focused on evidence-based discussions, respectful debates, and community engagement.',
+    tags: ['Social Platform', 'Community'],
+  },
+];
+
+// Years left empty ('') are dates still to be confirmed; the card hides the year until one is set.
 const JOURNEY = [
-  { kind: 'edu',  year: '2022-2026', role: 'BS Computer Science', sub: 'Rafik Hariri University' },
-  { kind: 'work', year: '2024',         role: 'Coding & AI Instructor', sub: 'Geek Express' },
-  { kind: 'work', year: '2025',         role: 'Software Development Intern', sub: 'Imperium Code' },
-  { kind: 'work', year: '2025',         role: 'Fullstack Developer Trainee', sub: 'Integrated Digital Systems' },
-  { kind: 'work', year: '2026',         role: 'Backend & Blockchain Developer', sub: 'PlayOps' },
-  { kind: 'work', year: '2025-2026',    role: 'Personal and Team Projects', sub: '' },
-  { kind: 'work', year: '2026',         role: 'Automation & Development', sub: 'SHELT Global Ltd' },
+  { kind: 'edu',  year: '2022-2025', role: 'BS Computer Science', sub: 'Rafik Hariri University' },
+  { kind: 'work', year: '2024',      role: 'Coding Trainer', sub: 'Geek Express', desc: 'Taught programming, web development, data analysis, and machine learning.' },
+  { kind: 'work', year: '2025',      role: 'Software Development Intern', sub: 'Imperium Code', desc: 'QA reviews and feature updates on a React Native and Laravel app.' },
+  { kind: 'work', year: '2025',      role: 'Full-Stack Development Intern', sub: 'IDS — Integrated Digital Systems', desc: 'Developed REST APIs and a meetings management system using ASP.NET Core, C#, React, and layered architecture.' },
+  { kind: 'work', year: '2026',      role: 'Backend & Blockchain Developer', sub: 'PlayOps' },
+  { kind: 'work', year: '2025-2026', role: 'Personal and Team Projects', sub: '' },
+  { kind: 'work', year: '2026',      role: 'Full-Stack Development & Automation', sub: 'SHELT Global', desc: 'Developed a cybersecurity automation platform combining backend services, automated monitoring, reporting, and operational analytics, reducing manual workload by over 80%.' },
+  { kind: 'work', year: '',          role: 'Full-Stack Software Developer', sub: 'Freelance', desc: 'Delivered two production ERP systems for Alara Line and Laz Press alongside multiple e-commerce websites and custom applications.' },
+  { kind: 'work', year: '',          role: 'Full-Stack Developer', sub: 'Suppy', desc: 'Contributed to enterprise multi-tenant applications using ASP.NET Core, C#, EF Core, Vue.js, and Next.js. Developed REST APIs and microservices, contributed to service migrations, testing, and CI/CD through Azure DevOps.' },
 ];
 
 const STACK = {
-  frontend: ['React', 'TypeScript', 'Next.js', 'Tailwind', 'Framer Motion', 'Vite', 'HTML/CSS'],
-  backend:  ['Node.js', 'Java', 'C++', 'Python', 'C#', 'SQL', 'JavaScript', 'Kotlin', 'PHP', 'Golang', 'Assembly MIPS', 'Verilog HDL', 'API Development', 'REST', 'SOAP', 'Postgres', 'Prisma', 'GraphQL', 'Redis', 'FastAPI', 'Express.js', 'Django', 'Spring Boot', '.NET / ASP.NET', 'Laravel', 'WebSocket', 'gRPC', 'Docker', 'Message Queues', 'Kafka', 'RabbitMQ', 'MongoDB', 'MySQL', 'SQLite', 'Supabase', 'Firebase', 'Authentication / OAuth', 'JWT', 'Microservices', 'Caching', 'CI/CD', 'Nginx'],
-  web3:     ['Machine Learning', 'LLM Integration', 'Prompt Engineering', 'OpenAI API', 'Vector Databases', 'Embeddings', 'PyTorch', 'TensorFlow', 'Scikit-learn', 'Pandas', 'NumPy', 'Model Evaluation', 'AI Agents', 'Realtime AI', 'Speech-to-Text', 'Text-to-Speech'],
-  devops:   ['Playwright', 'Selenium', 'Web Scraping', 'Browser Automation', 'Python Automation', 'Bash Scripting', 'Cron Jobs', 'GitHub Actions', 'CI/CD', 'Docker', 'Linux', 'Nginx', 'ETL Pipelines', 'Report Generation', 'Scheduled Jobs', 'Data Extraction', 'Proxy Rotation', 'SOCKS5', 'Tor Network', 'Monitoring', 'Alerting'],
+  languages: ['C#', 'Go', 'Python', 'TypeScript', 'JavaScript', 'Java', 'Kotlin', 'PHP', 'SQL', 'C++', 'Dart', 'Assembly MIPS', 'Verilog HDL'],
+  backend:   ['ASP.NET Core', 'Entity Framework Core', 'MediatR', 'Node.js', 'Express.js', 'FastAPI', 'Laravel', 'REST APIs', 'Microservices', 'CQRS', 'Modular Monolith', 'Multi-Tenant Architecture', 'GraphQL', 'SOAP', 'WebSocket', 'gRPC', 'Prisma', 'Django', 'Spring Boot', 'Authentication / OAuth', 'JWT', 'Message Queues', 'Kafka', 'RabbitMQ', 'Caching'],
+  frontend:  ['React', 'Next.js', 'Vue.js', 'Flutter', 'React Native', 'Tailwind CSS', 'Framer Motion', 'Vite', 'HTML/CSS'],
+  databases: ['PostgreSQL', 'SQL Server', 'MySQL', 'Redis', 'Firebase', 'Supabase', 'pgvector', 'MongoDB', 'SQLite'],
+  devops:    ['Azure DevOps', 'Git', 'GitHub', 'Docker', 'CI/CD', 'GitHub Actions', 'Cloudflare Workers', 'Linux', 'Nginx', 'Postman', 'Bash Scripting'],
+  ai:        ['LLM Integration', 'OpenAI APIs', 'Computer Vision', 'MediaPipe', 'Web Scraping', 'Playwright', 'Workflow Automation', 'Machine Learning', 'Prompt Engineering', 'Embeddings', 'Vector Databases', 'AI Agents', 'Realtime AI', 'Speech-to-Text', 'Text-to-Speech', 'PyTorch', 'TensorFlow', 'Scikit-learn', 'Pandas', 'NumPy', 'Model Evaluation', 'Selenium', 'Browser Automation', 'Python Automation', 'ETL Pipelines', 'Report Generation', 'Scheduled Jobs', 'Cron Jobs', 'Data Extraction', 'Proxy Rotation', 'SOCKS5', 'Tor Network', 'Monitoring', 'Alerting'],
 };
 
 const STACK_TABS = [
-  { key: 'frontend', n: '01', label: 'Frontend' },
-  { key: 'backend', n: '02', label: 'Backend' },
-  { key: 'web3', n: '03', label: 'AI / ML' },
-  { key: 'devops', n: '04', label: 'Automation' },
+  { key: 'languages', n: '01', label: 'Languages' },
+  { key: 'backend', n: '02', label: 'Backend & Architecture' },
+  { key: 'frontend', n: '03', label: 'Frontend & Mobile' },
+  { key: 'databases', n: '04', label: 'Databases' },
+  { key: 'devops', n: '05', label: 'Cloud & DevOps' },
+  { key: 'ai', n: '06', label: 'AI & Automation' },
 ];
 
 const ABOUT_MODES = {
@@ -332,8 +483,8 @@ const ABOUT_MODES = {
     n: '01',
     label: 'Full-Stack',
     title: 'I build complete products from idea to working system.',
-    body: 'I work across frontend, backend, databases, APIs, authentication, dashboards, and deployment so a project feels connected instead of stitched together.',
-    tags: ['React', 'APIs', 'Databases'],
+    body: 'I work across frontend, backend, databases, APIs, authentication, dashboards, and deployment, from client websites to production ERP systems, so a project feels connected instead of stitched together.',
+    tags: ['ASP.NET Core', 'React', 'Databases'],
   },
   security: {
     n: '02',
@@ -386,9 +537,9 @@ const COMMUNITY_REPRESENTATION = [
 const LEADING_TECH_BEYOND = [
   {
     year: '2025',
-    label: 'Organizer',
+    label: 'Technical Lead · Organizer',
     title: 'NASA Space Apps',
-    body: 'Managed and executed a globally affiliated innovation event, bringing developers, engineers, designers, and scientists together to solve real-world challenges with NASA open data.',
+    body: 'Technical lead and organizer for a globally affiliated innovation event, bringing developers, engineers, designers, and scientists together to solve real-world challenges with NASA open data.',
     photos: ['/spaceapps1.png', '/spaceapps2.png', '/spaceapps3.png', '/spaceapps4.png', '/spaceapps5.png', '/spaceapps6.png', '/spaceapps7.png'],
   },
   {
@@ -402,39 +553,60 @@ const LEADING_TECH_BEYOND = [
     year: '2025',
     label: 'Representation',
     title: 'Representing Tech Companies',
-    body: 'Represented technical teams and product ideas in conference spaces, translating complex work into confident conversations, demos, and human connection.',
+    body: 'Represented technical teams and companies at conferences and events: presenting products, running demos, and turning complex technical work into clear, confident conversations.',
     photos: ['/conf1.png', '/conf2.png', '/conf3.png', '/conf5.png', '/conf%206.png'],
   },
   {
     year: '2025',
-    label: 'Community',
-    title: 'Public Speaking & Debate Presidency',
-    body: 'Led club planning, workshops, and speaking-focused events that helped students practice presence, persuasion, communication, and leadership.',
+    label: 'President',
+    title: 'Public Speaking & Debate Club',
+    body: 'As president at Rafik Hariri University, led the planning and running of debate, public speaking, and advocacy events, and workshops that helped students practice presence, persuasion, and leadership.',
     photos: ['/publicspeaking1.png', '/publicspeaking2.png', '/publicspeaking3.png'],
   },
 ];
 
+// status: 'In progress' marks a certificate that is not finished yet.
 const CERTIFICATIONS = [
-  { title: 'Google Cybersecurity Certificate', issuer: 'Coursera', year: '2023-2024' },
-  { title: 'CCNA1v7 Certificate', issuer: 'Cisco', year: '2024', image: '/CCNAv7.png' },
-  { title: 'Microsoft Excel Certification', issuer: 'Microsoft', year: '2024' },
-  { title: 'GEN AI for Software Developers', issuer: 'IBM', year: '2026', image: '/ibmsofware.png' },
-  { title: 'Aspire Leaders Program', issuer: 'Remote', year: '2026', note: 'Leadership program initially funded by Harvard.', image: '/aspire.png' },
-  { title: 'Leaders of Lebanon Workshop', issuer: 'Haigazian University', year: '2022', note: 'Focus on emotional intelligence, problem solving, and communication.', image: '/leadership.png' },
+  { title: 'Back-End .NET Developer Professional', issuer: 'Microsoft', year: '2026' },
+  { title: 'Front-End Developer Professional Certificate', issuer: 'IBM', year: '2026–Present', status: 'In progress', note: 'Currently in progress.' },
+  { title: 'Generative AI for Mobile App Developers', issuer: 'IBM', year: '2026', note: 'Four-course specialization, including Generative AI: Elevate your Software Development Career.', image: '/mobile ibm.png' },
+  { title: 'Google Cybersecurity Certificate', issuer: 'Google · Coursera', year: '2023-2024' },
+  { title: 'CCNAv7: Introduction to Networks', issuer: 'Cisco Networking Academy', year: '2024', image: '/CCNAv7.png' },
   { title: 'ML Using Google Sheets', issuer: 'USJ EFAI', year: '2025', image: '/usl.png' },
-  { title: 'GEN AI for Mobile Devs', issuer: 'IBM', year: '2026', image: '/mobile ibm.png' },
+  { title: 'Microsoft Excel Certification', issuer: 'Microsoft', year: '2024' },
+];
+
+const LEADERSHIP_PROGRAMS = [
+  { title: 'Aspire Leaders Program', issuer: 'Aspire Institute', year: '2026', note: 'Leadership program initially funded by Harvard.', image: '/aspire.png' },
+  { title: 'Leaders of Lebanon Workshop', issuer: 'Haigazian University', year: '2022', note: 'Focus on emotional intelligence, problem solving, and communication.', image: '/leadership.png' },
 ];
 
 const TERMINAL_IDENTITY = [
   { cmd: '$ whoami', answer: 'Razan Hasbini' },
   { cmd: '$ location', answer: 'Lebanon / remote & relocation-friendly' },
-  { cmd: '$ title', answer: 'Full-stack + AI developer' },
+  { cmd: '$ title', answer: 'Software developer · full-stack + AI' },
+  { cmd: '$ also', answer: 'presenting, leading teams, technical consultancy' },
 ];
 
 const MARQUEE = [
-  'FULL-STACK', 'MOBILE APPS', 'AI FEATURES', 'AUTOMATION', 'BEIRUT · LB',
-  'AVAILABLE Q2 2026', 'OPEN TO WORK', 'REACT · NODE · FLUTTER',
+  'FULL-STACK', 'ENTERPRISE SOFTWARE', 'MOBILE APPS', 'AI FEATURES', 'AUTOMATION', 'BEIRUT · LB',
+  'OPEN TO OPPORTUNITIES', 'ASP.NET · REACT · FLUTTER',
 ];
+
+// Beirut switches between UTC+2 and UTC+3 with daylight saving, so read the current offset instead of hardcoding it.
+const getBeirutTimezoneLabel = () => {
+  try {
+    const offset = new Intl.DateTimeFormat('en-US', { timeZone: 'Asia/Beirut', timeZoneName: 'shortOffset' })
+      .formatToParts(new Date())
+      .find((part) => part.type === 'timeZoneName')?.value;
+    if (offset) return `Beirut time · ${offset.replace('GMT', 'UTC')}`;
+  } catch {
+    // Older browsers without shortOffset support fall through to the static label.
+  }
+  return 'Beirut time (EET / EEST)';
+};
+
+const CONTACT_EMAIL = 'hasrazan810@gmail.com';
 
 const scrollTo = (e, id) => {
   e.preventDefault();
@@ -757,10 +929,12 @@ function ProcessBlueprint() {
 }
 
 /* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ Work item (case study row) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+// Tab order in every project popup. The first tab is the one that opens by default.
 const WORK_TABS = [
-  { key: 'docs', label: 'Documentation' },
-  { key: 'photos', label: 'Photos' },
   { key: 'link', label: 'Project Link' },
+  { key: 'photos', label: 'Photos' },
+  { key: 'docs', label: 'Documentation' },
+  { key: 'overview', label: 'Overview' },
 ];
 
 const LINK_ICONS = {
@@ -803,6 +977,7 @@ function WorkItem({ item, onOpen }) {
     >
       <span className="pf-work__n">{item.n}</span>
       <div className="pf-work__titleWrap">
+        {item.status && <span className="pf-work__status">{item.status}</span>}
         <h3 className="pf-work__title">{item.title}</h3>
         <p className="pf-work__sub">{item.sub}</p>
       </div>
@@ -811,8 +986,16 @@ function WorkItem({ item, onOpen }) {
       </div>
       <span className="pf-work__year">{item.year}</span>
       <I.Arrow className="pf-work__arrow" />
-      <div className="pf-work__preview" ref={imgRef}>
-        <img src={item.img} alt="" />
+      <div className={`pf-work__preview ${item.img ? '' : 'pf-work__preview--text'}`} ref={imgRef}>
+        {item.img ? (
+          <img src={item.img} alt="" />
+        ) : (
+          <>
+            <span>{item.status || 'Project'}</span>
+            <strong>{item.title}</strong>
+            <em>{item.previewNote || 'Open for details'}</em>
+          </>
+        )}
       </div>
     </div>
   );
@@ -848,22 +1031,34 @@ function WorkModal({ project, activeTab, onTabChange, onClose }) {
   const showPrevPhoto = () => setLightboxIndex((current) => (current - 1 + project.photos.length) % project.photos.length);
   const showNextPhoto = () => setLightboxIndex((current) => (current + 1) % project.photos.length);
 
+  const hasStack = stackPhotos.length > 0;
+  const modalClasses = [
+    'pf-modal',
+    'pf-modal--stack',
+    project.previewMode === 'phone' ? 'pf-modal--phone' : '',
+    hasStack ? '' : 'pf-modal--nostack',
+  ].filter(Boolean).join(' ');
+
   return (
-    <div className={`pf-modal pf-modal--stack ${project.previewMode === 'phone' ? 'pf-modal--phone' : ''}`} role="dialog" aria-modal="true" aria-labelledby="pf-modal-title">
+    <div className={modalClasses} role="dialog" aria-modal="true" aria-labelledby="pf-modal-title">
       <button className="pf-modal__shade" onClick={onClose} aria-label="Close project details" />
 
       <article className="pf-modal__box">
-        <div className="pf-modal__stack" aria-hidden>
-          {stackPhotos.map((photo, i) => (
-            <span className={`pf-modal__stack-card pf-modal__stack-card--${i + 1}`} key={photo}>
-              <img src={photo} alt="" />
-            </span>
-          ))}
-        </div>
+        {hasStack && (
+          <div className="pf-modal__stack" aria-hidden>
+            {stackPhotos.map((photo, i) => (
+              <span className={`pf-modal__stack-card pf-modal__stack-card--${i + 1}`} key={photo}>
+                <img src={photo} alt="" />
+              </span>
+            ))}
+          </div>
+        )}
 
         <header className="pf-modal__head">
           <div>
-            <span className="pf-modal__eyebrow">{project.n} / {project.year}</span>
+            <span className="pf-modal__eyebrow">
+              {[project.n, project.year, project.status].filter(Boolean).join(' / ')}
+            </span>
             <h3 id="pf-modal-title">{project.title}</h3>
             <p>{project.sub}</p>
           </div>
@@ -889,6 +1084,34 @@ function WorkModal({ project, activeTab, onTabChange, onClose }) {
         </div>
 
         <div className="pf-modal__body" key={activeTab}>
+          {activeTab === 'overview' && (
+            <div className="pf-modal__overview">
+              {(project.category || project.role) && (
+                <dl className="pf-modal__facts">
+                  {project.category && (
+                    <div>
+                      <dt>Category</dt>
+                      <dd>{project.category}</dd>
+                    </div>
+                  )}
+                  {project.role && (
+                    <div>
+                      <dt>My role</dt>
+                      <dd>{project.role}</dd>
+                    </div>
+                  )}
+                </dl>
+              )}
+              <p className="pf-modal__summary">{project.overview || project.sub}</p>
+              {project.highlights?.length > 0 && (
+                <ul className="pf-modal__highlights">
+                  {project.highlights.map((point) => <li key={point}>{point}</li>)}
+                </ul>
+              )}
+              {project.note && <p className="pf-modal__note">{project.note}</p>}
+            </div>
+          )}
+
           {activeTab === 'docs' && (
             <div className="pf-modal__docs">
               {project.docs.length > 0 ? (
@@ -908,7 +1131,14 @@ function WorkModal({ project, activeTab, onTabChange, onClose }) {
             </div>
           )}
 
-          {activeTab === 'photos' && (
+          {activeTab === 'photos' && project.photos.length === 0 && (
+            <div className="pf-modal__empty">
+              <span>Screenshots</span>
+              <p>{project.photosNote || 'No public screenshots are attached for this project yet.'}</p>
+            </div>
+          )}
+
+          {activeTab === 'photos' && project.photos.length > 0 && (
             <div className="pf-modal__photos">
               {project.photos.map((photo, i) => (
                 <button
@@ -954,7 +1184,7 @@ function WorkModal({ project, activeTab, onTabChange, onClose }) {
               ) : (
                 <div className="pf-modal__empty">
                   <span>Project link</span>
-                  <p>No public project link is attached for this project yet.</p>
+                  <p>{project.linkNote || 'No public project link is attached for this project yet.'}</p>
                 </div>
               )}
             </div>
@@ -985,13 +1215,13 @@ function WorkModal({ project, activeTab, onTabChange, onClose }) {
 
 export default function Portfolio() {
   const cursorRef = useRef(null);
-  const [activeTab, setActiveTab] = useState('frontend');
+  const [activeTab, setActiveTab] = useState(STACK_TABS[0].key);
   const [stackSearch, setStackSearch] = useState('');
   const [activeAbout, setActiveAbout] = useState('builder');
   const [activeLeadPhotos, setActiveLeadPhotos] = useState({});
   const [selectedWork, setSelectedWork] = useState(null);
   const [selectedCert, setSelectedCert] = useState(null);
-  const [activeWorkTab, setActiveWorkTab] = useState('docs');
+  const [activeWorkTab, setActiveWorkTab] = useState(WORK_TABS[0].key);
   const [terminalLines, setTerminalLines] = useState([]);
   const [terminalStep, setTerminalStep] = useState(0);
   const [terminalRunning, setTerminalRunning] = useState(false);
@@ -1120,10 +1350,47 @@ export default function Portfolio() {
     return () => clearInterval(timer);
   }, []);
 
-  const openWork = (project) => {
+  const openWork = (project, tab = WORK_TABS[0].key) => {
     setSelectedWork(project);
-    setActiveWorkTab('docs');
+    setActiveWorkTab(tab);
   };
+
+  const renderCertCard = (cert, i) => {
+    const meta = [cert.issuer, cert.year, cert.status].filter(Boolean).join(' · ');
+    return (
+      <button
+        className="pf-cred__mini"
+        key={cert.title}
+        type="button"
+        style={{ '--ci': i }}
+        onClick={() => setSelectedCert(cert)}
+        aria-label={`Open ${cert.title} certificate${cert.status ? ` (${cert.status})` : ''}`}
+      >
+        <span className={`pf-cred__paper ${cert.image ? 'pf-cred__paper--image' : ''}`} aria-hidden>
+          {cert.status && <span className="pf-cred__status">{cert.status}</span>}
+          {cert.image ? (
+            <img src={cert.image} alt="" />
+          ) : (
+            <>
+              <span className="pf-cred__seal">{cert.issuer.slice(0, 2)}</span>
+              <span className="pf-cred__paper-k">Certificate</span>
+              <span className="pf-cred__paper-title">{cert.title}</span>
+              <span className="pf-cred__paper-line" />
+              <span className="pf-cred__paper-meta">{cert.issuer} · {cert.year}</span>
+            </>
+          )}
+        </span>
+        <span className="pf-cred__caption">
+          <strong>{cert.title}</strong>
+          <small>{meta}</small>
+        </span>
+      </button>
+    );
+  };
+
+  const featuredWork = WORK.filter((project) => !project.archived);
+  const archivedWork = WORK.filter((project) => project.archived);
+  const timezoneLabel = getBeirutTimezoneLabel();
 
   const moveLeadPhoto = (role, total, direction) => {
     leadAutoPauseTicksRef.current = 4;
@@ -1185,7 +1452,7 @@ export default function Portfolio() {
       <div className="pf-top">
         <a href="#contact" className="pf-top__cta" onClick={(e) => scrollTo(e, 'contact')}>
           <span className="pf-top__dot" />
-          Available · Q2 2026
+          Open to opportunities
         </a>
       </div>
 
@@ -1221,8 +1488,8 @@ export default function Portfolio() {
                 <a href="#work" className="pf-btn pf-btn--primary" onClick={(e) => scrollTo(e, 'work')}>
                   <span>See selected work</span><I.Arrow className="pf-btn__ico" />
                 </a>
-                <a href="#contact" className="pf-btn pf-btn--ghost" onClick={(e) => scrollTo(e, 'contact')}>
-                  <I.Mail className="pf-btn__ico" /><span>hasrazan10@gmail.com</span>
+                <a href={`mailto:${CONTACT_EMAIL}`} className="pf-btn pf-btn--ghost">
+                  <I.Mail className="pf-btn__ico" /><span>{CONTACT_EMAIL}</span>
                 </a>
               </div>
 
@@ -1344,13 +1611,20 @@ export default function Portfolio() {
               </h3>
 
               <p className="pf-abt__lede">
-                I&apos;m Razan, I just graduated from computer science after thinking I want to spend my entire life in laboratories.
-                After shifting my entire career path to software development,I realized how innovative this world is , and how even though it is scary how much competition in the market there is from people who are just as passionate as I am, 
-                it is also very powerful, given how much we can create and build with just a computer. 
+                I&apos;m Razan. I graduated in computer science after once thinking I would spend my entire life in laboratories.
+                After shifting my whole career path to software development, I realized how innovative this world is. It is scary how much competition there is from people who are just as passionate as I am,
+                but it is also very powerful, given how much we can create and build with just a computer.
               </p>
 
               <p className="pf-abt__lede">
-                I aim to reach my full potential while challenging myself by working on sophisticated projects, enhancing them with my experience and insights, and ensuring to always keep up with this worlwide tech marathon.
+                Today I&apos;m a software developer working across enterprise software, AI, and full-stack development. I&apos;ve shipped two production ERP systems
+                that businesses run on every day, and built automation that cut a security team&apos;s manual work by more than 80%. What I enjoy just as much as the
+                code is everything around it: presenting a product, explaining a technical decision to people who aren&apos;t engineers, and helping a team work out
+                what is actually worth building. That mix of engineering, communication, and consultancy is where I want to keep growing.
+              </p>
+
+              <p className="pf-abt__lede">
+                I aim to reach my full potential by challenging myself with sophisticated projects, bringing my own experience and insights to them, and always keeping up with this worldwide tech marathon.
               </p>
 
 
@@ -1466,8 +1740,42 @@ export default function Portfolio() {
           </header>
 
           <div className="pf-work__list">
-            {WORK.map((w) => <WorkItem key={w.n} item={w} onOpen={openWork} />)}
+            {featuredWork.map((w) => <WorkItem key={w.n} item={w} onOpen={openWork} />)}
           </div>
+
+          <section className="pf-more pf-reveal" aria-labelledby="more-projects-title">
+            <header className="pf-more__head">
+              <span>// in progress &amp; archive</span>
+              <h3 id="more-projects-title">More projects</h3>
+            </header>
+            <div className="pf-more__grid">
+              {ONGOING_WORK.map((project) => (
+                <article className="pf-more__card" key={project.title}>
+                  <span className="pf-more__status pf-more__status--dev">In Development</span>
+                  <h4>{project.title}</h4>
+                  <p>{project.body}</p>
+                  <div className="pf-more__tags">
+                    {project.tags.map((tag) => <span key={tag}>{tag}</span>)}
+                  </div>
+                </article>
+              ))}
+              {archivedWork.map((project) => (
+                <article className="pf-more__card" key={project.title}>
+                  <span className="pf-more__status">{project.status}</span>
+                  <h4>{project.title}</h4>
+                  <p>{project.overview || project.sub}</p>
+                  <div className="pf-more__tags">
+                    {project.tags.map((tag) => <span key={tag}>{tag}</span>)}
+                  </div>
+                  {project.photos.length > 0 && (
+                    <button type="button" className="pf-more__open" onClick={() => openWork(project, 'photos')}>
+                      View screenshots <I.Arrow className="pf-more__open-ico" />
+                    </button>
+                  )}
+                </article>
+              ))}
+            </div>
+          </section>
         </section>
 
         {/* Beyond Code */}
@@ -1500,6 +1808,10 @@ export default function Portfolio() {
                 <div className="pf-leadBeyond__head">
                   <span>community signal</span>
                   <h4 id="leading-tech-beyond">Leading in Tech &amp; Beyond</h4>
+                  <p className="pf-leadBeyond__intro">
+                    I genuinely enjoy the side of tech that happens in front of people: speaking, presenting products, representing teams, and leading.
+                    I&apos;ve done it across academic, professional, and community settings, and I keep going back to it.
+                  </p>
                 </div>
 
                 <div className="pf-leadBeyond__list">
@@ -1573,34 +1885,17 @@ export default function Portfolio() {
                 </div>
 
                 <div className="pf-cred__grid">
-                  {CERTIFICATIONS.map((cert, i) => (
-                    <button
-                      className="pf-cred__mini"
-                      key={cert.title}
-                      type="button"
-                      style={{ '--ci': i }}
-                      onClick={() => setSelectedCert(cert)}
-                      aria-label={`Open ${cert.title} certificate`}
-                    >
-                      <span className={`pf-cred__paper ${cert.image ? 'pf-cred__paper--image' : ''}`} aria-hidden>
-                        {cert.image ? (
-                          <img src={cert.image} alt="" />
-                        ) : (
-                          <>
-                            <span className="pf-cred__seal">{cert.issuer.slice(0, 2)}</span>
-                            <span className="pf-cred__paper-k">Certificate</span>
-                            <span className="pf-cred__paper-title">{cert.title}</span>
-                            <span className="pf-cred__paper-line" />
-                            <span className="pf-cred__paper-meta">{cert.issuer} · {cert.year}</span>
-                          </>
-                        )}
-                      </span>
-                      <span className="pf-cred__caption">
-                        <strong>{cert.title}</strong>
-                        <small>{cert.issuer} · {cert.year}</small>
-                      </span>
-                    </button>
-                  ))}
+                  {CERTIFICATIONS.map((cert, i) => renderCertCard(cert, i))}
+                </div>
+              </section>
+
+              <section className="pf-cred pf-cred--leadership" aria-labelledby="leadership-development">
+                <div className="pf-cred__head">
+                  <h4 id="leadership-development" className="pf-cred__title">Leadership &amp; Development</h4>
+                </div>
+
+                <div className="pf-cred__grid">
+                  {LEADERSHIP_PROGRAMS.map((cert, i) => renderCertCard(cert, i))}
                 </div>
               </section>
             </div>
@@ -1629,6 +1924,12 @@ export default function Portfolio() {
                         <small>Year</small>
                         <strong>{selectedCert.year}</strong>
                       </span>
+                      {selectedCert.status && (
+                        <span>
+                          <small>Status</small>
+                          <strong>{selectedCert.status}</strong>
+                        </span>
+                      )}
                     </div>
                     {selectedCert.note && <p>{selectedCert.note}</p>}
                     <span className="pf-certModal__seal" aria-hidden>{selectedCert.issuer.slice(0, 2)}</span>
@@ -1659,9 +1960,10 @@ export default function Portfolio() {
             {JOURNEY.map((e, i) => (
               <div className={`pf-tl pf-tl--${e.kind} pf-tl--${i % 2 === 0 ? 'L' : 'R'} pf-reveal`} key={i}>
                 <div className="pf-tl__card">
-                  <span className="pf-tl__year">{e.year}</span>
+                  {e.year && <span className="pf-tl__year">{e.year}</span>}
                   <h4 className="pf-tl__role">{e.role}</h4>
                   {e.sub && <p className="pf-tl__sub">{e.sub}</p>}
+                  {e.desc && <p className="pf-tl__desc">{e.desc}</p>}
                 </div>
                 <div className="pf-tl__node"><span /></div>
               </div>
@@ -1763,24 +2065,24 @@ export default function Portfolio() {
                 Let&apos;s build <em>something</em><br />people remember.
               </h3>
               <p className="pf-contact__lede">
-                Open to freelance projects, full-time roles, and collaborations.
+                Open to full-time roles, freelance projects, technical consultancy, and collaborations.
                 Email is the fastest way to reach me — I typically reply within 24h.
               </p>
-              <a href="mailto:hasrazan10@gmail.com" className="pf-btn pf-btn--primary pf-btn--lg">
-                <I.Mail className="pf-btn__ico" /> hasrazan10@gmail.com
+              <a href={`mailto:${CONTACT_EMAIL}`} className="pf-btn pf-btn--primary pf-btn--lg">
+                <I.Mail className="pf-btn__ico" /> {CONTACT_EMAIL}
               </a>
               <div className="pf-contact__socials">
                 <a href="https://github.com/razanhasbini" aria-label="GitHub" className="pf-contact__sc" target="_blank" rel="noreferrer"><I.Gh /></a>
                 <a href="https://www.linkedin.com/in/razan-hasbini-2bb00a276" aria-label="LinkedIn" className="pf-contact__sc" target="_blank" rel="noreferrer"><I.Li /></a>
-                <a href="mailto:hasrazan10@gmail.com" aria-label="Mail" className="pf-contact__sc"><I.Mail /></a>
+                <a href={`mailto:${CONTACT_EMAIL}`} aria-label="Email" className="pf-contact__sc"><I.Mail /></a>
               </div>
             </div>
 
             <div className="pf-contact__right">
               {[
                 ['Location', 'Beirut, Lebanon'],
-                ['Timezone', 'UTC +3'],
-                ['Status', 'Available · Q2 2026'],
+                ['Timezone', timezoneLabel],
+                ['Status', 'Open to opportunities'],
                 ['Response', '< 24 hours'],
               ].map(([k, v]) => (
                 <div className="pf-contact__row" key={k}>
@@ -1795,7 +2097,7 @@ export default function Portfolio() {
         {/* â”€ Footer â”€ */}
         <footer className="pf-foot">
           <span className="pf-foot__brand">
-            <I.Bracket className="pf-foot__ico" /> razan.dev
+            <I.Bracket className="pf-foot__ico" /> razanhasbini.com
           </span>
           <span className="pf-foot__meta">© 2026 — Designed &amp; built with intent.</span>
           <a href="#home" className="pf-foot__top" onClick={(e) => scrollTo(e, 'home')}>

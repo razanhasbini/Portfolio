@@ -9463,3 +9463,271 @@
     max-height: 54svh;
   }
 }
+
+/* ══════════════════════════════════════════
+   Content update — project status, overview tab,
+   "More projects", timeline details, leadership list
+══════════════════════════════════════════ */
+
+/* Status label on a work row */
+.pf-work__status {
+  align-self: flex-start;
+  font-family: var(--pf-mono);
+  font-size: 0.62rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--pf-terracotta);
+  margin-bottom: 0.15rem;
+}
+
+/* Hover preview for projects with no public screenshot */
+.pf-work__preview--text {
+  display: grid;
+  align-content: center;
+  gap: 0.45rem;
+  padding: 1.1rem 1.2rem;
+  background:
+    radial-gradient(circle at 85% 15%, rgba(217, 147, 62, 0.22), transparent 45%),
+    var(--pf-forest);
+  color: var(--pf-cream);
+  border-color: rgba(245, 240, 224, 0.14);
+}
+.pf-work__preview--text span {
+  font-family: var(--pf-mono);
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--pf-teal);
+}
+.pf-work__preview--text strong {
+  font-family: var(--pf-display);
+  font-size: 1.05rem;
+  line-height: 1.15;
+}
+.pf-work__preview--text em {
+  font-family: var(--pf-mono);
+  font-style: normal;
+  font-size: 0.62rem;
+  color: rgba(245, 240, 224, 0.6);
+}
+
+/* Modal without a photo stack: give the header its full width back */
+.pf-modal--nostack .pf-modal__head {
+  min-height: auto;
+  padding-right: clamp(1.35rem, 3vw, 2.4rem);
+}
+
+/* Modal: Overview tab */
+.pf-modal__overview {
+  display: grid;
+  gap: 1.1rem;
+  padding: 0.4rem 0.3rem;
+}
+.pf-modal__facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 2rem;
+}
+.pf-modal__facts dt {
+  font-family: var(--pf-mono);
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--pf-terracotta);
+}
+.pf-modal__facts dd {
+  margin: 0.2rem 0 0;
+  font-weight: 600;
+  color: var(--pf-ink);
+}
+.pf-modal__summary {
+  max-width: 46rem;
+  font-size: 1.02rem;
+  line-height: 1.65;
+  color: var(--pf-ink);
+}
+.pf-modal__highlights {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 0.55rem 1.4rem;
+  padding: 0;
+  list-style: none;
+}
+.pf-modal__highlights li {
+  position: relative;
+  padding-left: 1.1rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: rgba(10, 10, 10, 0.72);
+}
+.pf-modal__highlights li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--pf-teal);
+}
+.pf-modal__note {
+  max-width: 46rem;
+  padding: 0.75rem 0.9rem;
+  border-left: 2px solid var(--pf-gold);
+  border-radius: 0 10px 10px 0;
+  background: rgba(217, 147, 62, 0.08);
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: rgba(10, 10, 10, 0.66);
+}
+
+/* More projects: in development + archive (deliberately quieter than featured rows) */
+.pf-more {
+  max-width: 1200px;
+  margin: clamp(3rem, 6vw, 4.5rem) auto 0;
+  padding: 0 2.5rem;
+}
+.pf-more__head {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+.pf-more__head span {
+  font-family: var(--pf-mono);
+  font-size: 0.7rem;
+  color: var(--pf-terracotta);
+}
+.pf-more__head h3 {
+  font-family: var(--pf-display);
+  font-size: clamp(1.3rem, 2vw, 1.6rem);
+  font-weight: 700;
+  color: var(--pf-ink);
+}
+.pf-more__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 0.9rem;
+}
+.pf-more__card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  padding: 1.1rem 1.2rem;
+  border: 1px solid var(--pf-border);
+  border-radius: 14px;
+  background: var(--pf-warm);
+  transition: border-color 0.25s, transform 0.25s;
+}
+.pf-more__card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(196, 82, 26, 0.3);
+}
+.pf-more__status {
+  align-self: flex-start;
+  padding: 0.2rem 0.55rem;
+  border-radius: 99px;
+  border: 1px solid var(--pf-border);
+  font-family: var(--pf-mono);
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(10, 10, 10, 0.55);
+}
+.pf-more__status--dev {
+  border-color: rgba(217, 147, 62, 0.45);
+  background: rgba(217, 147, 62, 0.1);
+  color: #8a5a1c;
+}
+.pf-more__card h4 {
+  font-family: var(--pf-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--pf-ink);
+}
+.pf-more__card p {
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: rgba(10, 10, 10, 0.62);
+}
+.pf-more__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: auto;
+  padding-top: 0.3rem;
+}
+.pf-more__tags span {
+  font-family: var(--pf-mono);
+  font-size: 0.62rem;
+  padding: 0.18rem 0.5rem;
+  border-radius: 99px;
+  background: rgba(28, 58, 43, 0.06);
+  color: var(--pf-ink);
+}
+.pf-more__open {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--pf-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--pf-terracotta);
+  cursor: pointer;
+}
+.pf-more__open:hover { text-decoration: underline; }
+.pf-more__open:focus-visible { outline: 2px solid var(--pf-teal); outline-offset: 3px; border-radius: 4px; }
+.pf-more__open-ico { width: 14px; height: 14px; }
+
+/* Journey: role description */
+.pf-tl__desc {
+  margin-top: 0.45rem;
+  font-size: 0.78rem;
+  line-height: 1.55;
+  color: rgba(245, 240, 224, 0.55);
+}
+
+/* Beyond Code: intro under the heading */
+.pf-leadBeyond__intro {
+  max-width: 40rem;
+  margin-top: 1.1rem;
+  font-size: 0.98rem;
+  line-height: 1.65;
+  color: rgba(245, 240, 224, 0.68);
+}
+
+/* Certificates: in-progress badge */
+.pf-cred__status {
+  position: absolute;
+  top: 0.55rem;
+  right: 0.55rem;
+  z-index: 2;
+  padding: 0.18rem 0.5rem;
+  border-radius: 99px;
+  background: var(--pf-gold);
+  color: var(--pf-forest);
+  font-family: var(--pf-mono);
+  font-size: 0.56rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+@media (max-width: 768px) {
+  .pf-more { padding: 0 1.25rem; }
+  .pf-more__head { flex-direction: column; gap: 0.2rem; }
+}
+.pf-more .pf-more__open {
+  font-family: var(--pf-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--pf-terracotta);
+}
+
+/* Modal now has four tabs (Overview added) */
+.pf-modal__tabs { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+@media (max-width: 768px) {
+  .pf-modal__tabs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
